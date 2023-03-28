@@ -49,6 +49,7 @@ export default {
               body: response.data
             }
             vm.$store.commit("setWeatherData", value);
+            vm.city = "";
           }).catch(function (error) {
             console.error(error);
           });

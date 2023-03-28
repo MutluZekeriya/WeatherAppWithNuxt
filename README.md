@@ -1,7 +1,7 @@
 
 git clone https://github.com/MutluZekeriya/WeatherAppWithNuxt.git
 
-node version : 16.16.0 
+npm version : 8.19.2
 
 # install dependencies
 $ npm install
@@ -16,6 +16,9 @@ $ npm run start
 # generate static project
 $ npm run generate
 ```
+
+
+Notes : I checked the data from the api with vuex. I made the declaration with transition .
 
 
 

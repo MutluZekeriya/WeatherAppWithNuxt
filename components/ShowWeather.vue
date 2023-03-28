@@ -43,6 +43,7 @@ export default {
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 100px;
 }
 
 td,
