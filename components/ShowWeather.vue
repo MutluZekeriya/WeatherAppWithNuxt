@@ -17,7 +17,7 @@
                     <td> {{ item.body.name }} </td>
                     <td> {{ item.time }} </td>
                     <td> {{ item.body.weather[0].main }} </td>
-                    <td> {{ (item.body.main.temp -272.15).toFixed(1)  }} </td>
+                    <td> {{ (item.body.main.temp - 272.15).toFixed(1) }} </td>
                     <td> {{ item.body.wind.speed }} </td>
                     <td> {{ item.body.main.humidity }}</td>
                     <td>
@@ -55,4 +55,5 @@ th {
 tr:nth-child(even) {
     background-color: #f5f5f5;
 }
+
 </style>

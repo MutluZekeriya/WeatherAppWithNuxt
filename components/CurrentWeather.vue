@@ -6,10 +6,13 @@
       <select class="city-select" name="city" v-model="city">
         <option value="">Seçiniz</option>
         <option :value="city" v-for="city in cities" :key="city">{{ city }}</option>
-      </select>  
-      <span class="warning" v-if="selectedCity">
-        Lütfen bir şehir seçiniz!!
-      </span>    
+      </select>
+      <transition name="fade">
+        <span class="warning" v-if="selectedCity">
+          Lütfen bir şehir seçiniz!!
+        </span>
+      </transition>
+
     </div>
   </div>
 </template>
@@ -33,29 +36,29 @@ export default {
         "Bartın", "Ardahan", "Iğdır", "Yalova", "Karabük ", "Kilis", "Osmaniye ", "Düzce"],
     }
   },
-  methods: {   
+  methods: {
     currentValue() {
       let vm = this;
-      if (this.city!="") {
+      if (this.city != "") {
         axios.get(process.env.apiUrl + "q=" + this.city + "&appid=" + process.env.apiKey)
-        .then(function (response) {
+          .then(function (response) {
 
-          let time = new Date();
-          const value = {
-            time,
-            body: response.data
-          }                                    
-          vm.$store.commit("setWeatherData", value);                 
-        }).catch(function (error) {
-          console.error(error);
-        });
-      }else{
+            let time = new Date();
+            const value = {
+              time,
+              body: response.data
+            }
+            vm.$store.commit("setWeatherData", value);
+          }).catch(function (error) {
+            console.error(error);
+          });
+      } else {
         this.selectedCity = true;
         setTimeout(() => {
           this.selectedCity = false;
         }, 2000);
       }
-      
+
     },
   },
 }
@@ -74,7 +77,27 @@ export default {
   padding: 8px 16px;
   box-sizing: border-box;
 }
-.warning{
+
+.warning {
   color: red;
 }
+
+
+/* 
+**Transition 
+*/
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  transition: all 0.6s ease-out;
+}
+
+.fade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+  opacity: 0;
+}
+
+
 </style>
